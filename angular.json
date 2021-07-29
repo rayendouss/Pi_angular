@@ -119,6 +119,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "piangular"
+    }
+  },
+  "defaultProject": "piangular",
+  "cli": {
+    "analytics": "84e1e831-ce43-470f-8442-3226333209dc"
+  }
 }

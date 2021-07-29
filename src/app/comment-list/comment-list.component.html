@@ -1,0 +1,41 @@
+<br>
+<br>
+<br>
+
+<h3 class="p-3 text-center">List of Comments</h3>
+
+
+<div class="container">
+          
+    <table class="table">
+      <thead>
+        <tr>
+      
+          <th>Msg</th>
+          <th>Date Of Subject</th>
+        <th>Delete Comments</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sub of comment">
+          
+          <td>{{sub.msg}}</td>
+          <td>{{sub.createAt| date:'yyyy-MM-dd HH:mm:ss '}}</td>
+          <td><button  (click)="onDelete(sub.id)"> Delete Comments</button></td>
+            
+        </tr>
+     
+      </tbody>
+    </table>
+   
+  </div>
+  <br>
+  <h3 class="p-3 text-center">Add Comment</h3>
+
+  <div>
+    <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
+      <input type="text"              class="form-control"  name="msg" [(ngModel)]="msg" placeholder="select msg"> 
+      <br>
+      <button type="submit">submit</button>
+    </form>
+    </div>

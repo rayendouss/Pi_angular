@@ -1,0 +1,30 @@
+
+<br>
+<br>
+<br>
+<h3 class="p-3 text-center">List of Subject</h3>
+<div class="container">
+          
+    <table class="table">
+      <thead>
+        <tr>
+            <th>Title</th>
+          <th>Msg</th>
+          <th>Date Of Subject</th>
+          <th>Comments</th>
+         
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let sub of subject">
+            <td>{{sub.title}}</td>
+          <td>{{sub.msg}}</td>
+          <td>{{sub.createAt| date:'yyyy-MM-dd HH:mm:ss '}}</td>
+         
+            <td><button [routerLink]="['/comment/',sub.id]"> Voir Comments</button></td>
+            
+        </tr>
+     
+      </tbody>
+    </table>
+  </div>
