@@ -10,17 +10,18 @@ export class GetSubejctService {
 
   apiCall()
   {
-    return this.http.get("http://localhost:8000/api/subjects")
+    return this.http.get("http://localhost:8000/commande/alljson")
   }
 
+  
   getcomments()
   {
-    return this.http.get("http://localhost:8000/api/comments")
+    return this.http.get("http://localhost:8000/oeuvre")
   }
   getSubjectbyID( id)
   {
     
-    return this.http.get('http://localhost:8000/api/subjects/',id)
+    return this.http.get('http://localhost:8000/commande/subject/'+id)
   }
   getUsers()
   {
@@ -30,7 +31,12 @@ export class GetSubejctService {
   deleteComments(id)
   {
     console.log(id)
-    return this.http.delete('http://localhost:8000/api/comments/'+id)
+    return this.http.post('http://localhost:8000/oeuvre/'+id,{})
+  }
+  deleteSubject(id)
+  {
+    console.log(id)
+    return this.http.delete('http://localhost:8000/commande/deleteCommandeJSON/'+id)
   }
 
   addComments(data)
@@ -39,7 +45,18 @@ export class GetSubejctService {
     const subjectId=data.subjectId
     const msg=data.msg
     const createAt=data.createAt
-    return this.http.post('http://localhost:8000/api/comments',
-    {msg,subjectId,createAt})
+    return  this.http.post(`http://localhost:8000/oeuvre/new?msg=${msg}&idSubject=${subjectId}`,{})
+  }
+
+  addsujet(data)
+  {
+    console.warn(data)
+    const title=data.title
+    const msg=data.msg
+    return  this.http.post(`http://localhost:8000/commande/addCommandejson/new?idClient=1&msg=${msg}&title=${title}`,{})
+  }
+  alluser()
+  {
+    return  this.http.get("http://localhost:8000/commande/allusers")
   }
 }

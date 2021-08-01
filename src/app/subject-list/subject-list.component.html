@@ -1,30 +1,74 @@
+<br>
+<br>
+<br>
+<br>
 
-<br>
-<br>
-<br>
-<h3 class="p-3 text-center">List of Subject</h3>
-<div class="container">
-          
-    <table class="table">
-      <thead>
-        <tr>
-            <th>Title</th>
-          <th>Msg</th>
-          <th>Date Of Subject</th>
-          <th>Comments</th>
-         
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let sub of subject">
-            <td>{{sub.title}}</td>
-          <td>{{sub.msg}}</td>
-          <td>{{sub.createAt| date:'yyyy-MM-dd HH:mm:ss '}}</td>
-         
-            <td><button [routerLink]="['/comment/',sub.id]"> Voir Comments</button></td>
-            
-        </tr>
-     
-      </tbody>
-    </table>
+<div >
+  <section class="wrapper">
+    <div class="container-fostrap">
+     <div class="mainaction" >
+       <div>
+      <input type="text"  class=" searchin"  name="title" [(ngModel)]="title" placeholder="select title"> 
+    </div>
+    <div>
+      <button mat-fab class="btna" (click)="openDialog()" aria-label="Example icon button with a bookmark icon">
+        <mat-icon>library_add</mat-icon>
+      </button>
+      
+    </div>
+    </div>
+    
+        <div class="content">
+            <div class="container">
+                <div class="row gridcontainer">
+                    <div *ngFor="let sub of subject | filter:title" class="col-xs-12 col-sm-3 grid">
+                        <div class="card">
+                            <a class="img-card" >
+                            <img src="https://1.bp.blogspot.com/-Bii3S69BdjQ/VtdOpIi4aoI/AAAAAAAABlk/F0z23Yr59f0/s640/cover.jpg" />
+                          </a>
+                            <div class="card-content">
+                                <h4 class="card-title">
+                                    <a >{{sub.title}}
+                                  </a>
+                                </h4>
+                                <p class="">
+                                  {{sub.create_at| date:'yyyy-MM-dd HH:mm:ss '}}  <br>
+                                  {{sub.client.name}} {{sub.client.surname}}            
+                                    </p>
+                                <p class="">
+                                  {{sub.msg}}                                </p>
+                            </div>
+                            <div class="card-read-more ">
+                                <div class="items-icons">
+                                  <div>
+                                    <mat-icon class="icons-color" >remove_red_eye</mat-icon>
+                                  </div>
+                              <a   [routerLink]="['/comment/',sub.id]" [state]="{data:sub}" class="btn btn-link btn-block " >
+                                 
+                                  Show Comments
+
+                                </a></div>
+                                <div class="items-icons">
+                                  <div>
+                                    <mat-icon class="icons-color">delete_outline</mat-icon> 
+                                  </div>
+                                  
+                                  <div>
+                                <a  (click)="onDelete(sub.id)"  class="btn btn-link btn-block">
+                                   Delete Subject
+                                  </a>
+                                </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                   
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</section>
+
+    
   </div>

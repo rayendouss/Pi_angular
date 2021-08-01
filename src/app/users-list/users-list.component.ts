@@ -10,9 +10,9 @@ export class UsersListComponent implements OnInit {
   constructor(private api:GetSubejctService) { }
 
   ngOnInit() {
-    this.api.getUsers().subscribe((data)=>{
-      console.log(data['hydra:member'])
-    this.users= data['hydra:member']
+    this.api.alluser().subscribe((data)=>{
+    
+    this.users= data
     })
   }
  

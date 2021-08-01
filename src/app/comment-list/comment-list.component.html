@@ -2,7 +2,7 @@
 <br>
 <br>
 
-<h3 class="p-3 text-center">List of Comments</h3>
+<!-- <h3 class="p-3 text-center">List of Comments</h3>
 
 
 <div class="container">
@@ -13,6 +13,7 @@
       
           <th>Msg</th>
           <th>Date Of Subject</th>
+          <th>Publié par</th>
         <th>Delete Comments</th>
         </tr>
       </thead>
@@ -20,7 +21,9 @@
         <tr *ngFor="let sub of comment">
           
           <td>{{sub.msg}}</td>
-          <td>{{sub.createAt| date:'yyyy-MM-dd HH:mm:ss '}}</td>
+        
+          <td>{{sub.create_at| date:'yyyy-MM-dd HH:mm:ss '}}</td>
+          <td>{{sub.commande.client.name}}</td>
           <td><button  (click)="onDelete(sub.id)"> Delete Comments</button></td>
             
         </tr>
@@ -36,6 +39,54 @@
     <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
       <input type="text"              class="form-control"  name="msg" [(ngModel)]="msg" placeholder="select msg"> 
       <br>
-      <button type="submit">submit</button>
+      <button type="submit">submit</button>Lore
     </form>
+    </div> -->
+
+
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" rel="stylesheet">
+<div class="container">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="post-content">
+              <img src="https://image.shutterstock.com/image-vector/forum-colorful-vector-typography-banner-260nw-1906851190.jpg" alt="post-image" class="img-responsive post-image">
+              <div class="post-container">
+                <img src="https://bootdey.com/img/Content/avatar/avatar6.png" alt="user" class="profile-photo-md pull-left">
+                <div class="post-detail">
+                  <div class="user-info">
+                    <h5><a href="timeline.html" class="profile-link">{{subject.client.name}} {{subject.client.surname}}</a> <span class="following">following</span></h5>
+                    <p class="text-muted">Published a photo : {{subject.create_at | date:'yyyy-MM-dd HH:mm:ss '}}</p>
+                  </div>
+                  <div class="reaction">
+                    <a class="btn text-green"><i class="fa fa-thumbs-up"></i> 13</a>
+                    <a class="btn text-red"><i class="fa fa-thumbs-down"></i> 0</a>
+                  </div>
+                  <div class="line-divider"></div>
+                  <div class="post-text">
+                    <p>{{subject.title}} <i class="em em-anguished"></i> <i class="em em-anguished"></i> <i class="em em-anguished"></i></p>
+                  </div>
+                  <div class="line-divider"></div>
+                  <div class="post-comment"     *ngFor="let sub of comment">
+                    <div>
+                    <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="" class="profile-photo-sm">
+                    <p class="text-muted">Published a comment : {{sub.create_at | date:'yyyy-MM-dd HH:mm:ss '}}</p>
+                  
+                    <p><a href="timeline.html" class="profile-link" style="margin-left: 30px;"> </a><i class="em em-laughing" ></i> Comment : {{sub.msg}} </p>
+                  </div>
+                    <div>
+                      <mat-icon class="icons-color" (click)="onDelete(sub.id)">delete_outline</mat-icon> 
+                    </div>
+                  </div>
+           
+                  <div class="post-comment">
+                    
+                    <img src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="" class="profile-photo-sm">
+                    <form #userPost="ngForm" (ngSubmit)="onSubmit(userPost.value)">
+                    <input type="text" class="form-control" name="msg" [(ngModel)]="msg"  placeholder="Post a comment"> </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+        </div>
     </div>
+</div>

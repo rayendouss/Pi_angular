@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { GetSubejctService } from '../get-subejct.service';
 import { NgForm } from '@angular/forms';
 import {formatDate} from '@angular/common';
+import { TOUCH_BUFFER_MS } from '@angular/cdk/a11y';
 @Component({
   selector: 'app-comment-list',
   templateUrl: './comment-list.component.html',
@@ -14,8 +15,9 @@ export class CommentListComponent implements OnInit {
   comments:any;
   comment:any;
   msg:string
- 
+  subject:any
   constructor(private router:Router,private route: ActivatedRoute,private api:GetSubejctService) { 
+    
     class comnt{
       msg:string;
       createAt:Date;
@@ -25,25 +27,32 @@ export class CommentListComponent implements OnInit {
   }
   
   ngOnInit() {
-   
+      
+ 
+ 
+  
+ 
+   console.log(this.subject)
+    
     this.route.params.subscribe(params => {
       this.id = params['id']; // (+) converts string 'id' to a number
     });
-    this.api.getcomments().subscribe((data)=>{
-      this.comments=data['hydra:member']
-      console.log(data['hydra:member'][0]['subjectId'].slice(14))
-      this.comment=this.comments.filter(item => item.subjectId.slice(14) === this.id)
-    })
 
     this.api.getSubjectbyID(this.id).subscribe((data)=>{
-      this.subjectname=data['hydra:member']['title']
-      console.warn(data['hydra:member'])
+      this.subject=data
     })
+    this.api.getcomments().subscribe((data)=>{
+      this.comments=data
+     console.log(this.comments)
+      this.comment=this.comments.filter(item => item.commande.id==this.id)
+      console.log(this.comment)
+    })
+
   }
 
 onSubmit(data){
   
-  data.subjectId="/api/subjects/"+this.id
+  data.subjectId=this.id
   data.createAt=formatDate(new Date(), 'yyyy/MM/dd HH:mm:ss', 'en');
   this.api.addComments(data).subscribe((data)=>{
     console.warn(data)

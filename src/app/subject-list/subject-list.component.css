@@ -1,0 +1,35 @@
+.grid{
+    position: relative;
+    top:50px
+    
+}
+
+.mainaction{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.btna{
+   background-color: #c3002f;
+   position: relative;
+   right:130px
+}
+
+.searchin{
+    justify-content: center;
+    
+    height: 35px;
+    border-radius: 18px;
+    width: 200px;
+    position: relative;
+    left:130px;
+    
+}
+.items-icons{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+.icons-color{
+    color:#0d6efd;
+}

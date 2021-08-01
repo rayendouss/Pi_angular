@@ -7,10 +7,27 @@ import {HttpClientModule} from "@angular/common/http";
 import { UsersListComponent } from './users-list/users-list.component'
 import { CommonModule } from '@angular/common';
 import { FormsModule }   from '@angular/forms';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatGridListModule} from '@angular/material/grid-list';
+import {MatDialogModule} from '@angular/material/dialog';
+import {MatFormFieldModule} from '@angular/material/form-field';
+import { AddsubjectComponent } from './addsubject/addsubject.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import {
+  
+  
+  MatInputModule,
+  
+} from '@angular/material/input';
+import {MatButtonModule} from '@angular/material/button';
+import {MatIconModule} from '@angular/material/icon';
+import { Ng2SearchPipeModule } from 'ng2-search-filter';
+
 @NgModule({
   declarations: [
     AppComponent,
-    routingComponents
+    routingComponents,
+    AddsubjectComponent
     
   ],
   imports: [
@@ -18,7 +35,17 @@ import { FormsModule }   from '@angular/forms';
     CommonModule,
     AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    BrowserAnimationsModule,
+    MatGridListModule,
+    MatDialogModule,
+    ReactiveFormsModule,
+    MatInputModule,
+    MatButtonModule,
+    MatIconModule,
+    Ng2SearchPipeModule
+    
+  
   ],
   providers: [],
   bootstrap: [AppComponent]
